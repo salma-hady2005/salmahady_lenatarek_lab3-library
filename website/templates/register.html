@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | The Reading Room</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <main class="auth-layout">
+
+        <section class="visual-panel">
+            <div class="image-overlay"></div>
+
+            <a class="brand" href="{{ url_for('home') }}">
+                <span class="brand-icon">L</span>
+                <span>THE READING ROOM</span>
+            </a>
+
+            <div class="visual-content">
+                <span class="eyebrow">YOUR STORY BEGINS HERE</span>
+                <h1>Every book<br>opens a new world.</h1>
+                <p>
+                    Create your account and begin exploring
+                    a library filled with knowledge and imagination.
+                </p>
+            </div>
+
+            <p class="image-caption">Find a story that stays with you.</p>
+        </section>
+
+        <section class="form-panel">
+            <div class="form-wrapper">
+
+                <div class="mobile-brand">
+                    <span class="brand-icon">L</span>
+                    THE READING ROOM
+                </div>
+
+                <div class="form-heading">
+                    <span class="eyebrow">JOIN OUR COMMUNITY</span>
+                    <h2>Create your account</h2>
+                    <p>It only takes a moment to get started.</p>
+                </div>
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% for category, message in messages %}
+                        <div class="message {{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endwith %}
+
+                <form action="{{ url_for('register') }}" method="POST">
+
+                    <div class="input-group">
+                        <label for="username">Username</label>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            placeholder="Choose a username"
+                            autocomplete="username"
+                            minlength="3"
+                            maxlength="100"
+                            required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">Email address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                            maxlength="150"
+                            required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Create a password"
+                            autocomplete="new-password"
+                            minlength="8"
+                            required>
+                        <small>Use at least 8 characters.</small>
+                    </div>
+
+                    <button type="submit" class="primary-button">
+                        Create Account <span>→</span>
+                    </button>
+
+                </form>
+
+                <div class="form-footer">
+                    Already have an account?
+                    <a href="{{ url_for('home') }}">Sign in</a>
+                </div>
+
+                <div class="form-decoration">
+                    <span>✦</span>
+                    Your next favorite book awaits.
+                    <span>✦</span>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>

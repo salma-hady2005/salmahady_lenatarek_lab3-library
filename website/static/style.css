@@ -1,0 +1,352 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+:root {
+    --navy: #253b32;
+    --navy-dark: #192b24;
+    --cream: #f7f4ed;
+    --white: #ffffff;
+    --text: #29352f;
+    --muted: #82877f;
+    --border: #e5e3db;
+    --gold: #c6a46a;
+    --success: #246b43;
+    --error: #a83434;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--cream);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+}
+
+.auth-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+}
+
+/* LEFT PHOTO PANEL */
+
+.visual-panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 42px 48px;
+    overflow: hidden;
+    color: white;
+
+    background-image:
+        linear-gradient(
+            180deg,
+            rgba(15, 29, 22, 0.55),
+            rgba(15, 29, 22, 0.35) 40%,
+            rgba(15, 29, 22, 0.85)
+        ),
+        url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1400&q=85');
+
+    background-position: center;
+    background-size: cover;
+}
+
+.image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        rgba(30, 49, 39, 0.18),
+        transparent 65%
+    );
+    pointer-events: none;
+}
+
+.brand,
+.visual-content,
+.image-caption {
+    position: relative;
+    z-index: 1;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.brand-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+}
+
+.visual-content {
+    max-width: 490px;
+    margin: 60px 0;
+}
+
+.eyebrow {
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+}
+
+.visual-content h1 {
+    margin: 22px 0;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 4.2vw, 60px);
+    font-weight: 500;
+    line-height: 1.16;
+}
+
+.visual-content p {
+    max-width: 360px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.image-caption {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 11px;
+    letter-spacing: 0.5px;
+}
+
+.mobile-brand {
+    display: none;
+}
+
+/* RIGHT FORM PANEL */
+
+.form-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 45px 35px;
+    background: var(--cream);
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 390px;
+}
+
+.form-heading {
+    margin-bottom: 32px;
+}
+
+.form-heading h2 {
+    margin: 13px 0 9px;
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 500;
+    color: var(--navy);
+}
+
+.form-heading p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* INPUTS */
+
+.input-group {
+    margin-bottom: 21px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 9px;
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 15px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 13px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-group input::placeholder {
+    color: #a4a69f;
+}
+
+.input-group input:focus {
+    border-color: var(--navy);
+    box-shadow: 0 0 0 3px rgba(37, 59, 50, 0.08);
+}
+
+.input-group small {
+    display: block;
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+/* BUTTON */
+
+.primary-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 28px;
+    padding: 15px 18px;
+    border: none;
+    border-radius: 7px;
+    background: var(--navy);
+    color: white;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.primary-button:hover {
+    background: var(--navy-dark);
+    transform: translateY(-1px);
+}
+
+.primary-button span {
+    color: var(--gold);
+    font-size: 20px;
+}
+
+/* FOOTER */
+
+.form-footer {
+    margin-top: 27px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.form-footer a {
+    margin-left: 4px;
+    color: var(--navy);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+.form-decoration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 45px;
+    color: #9a9b91;
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.form-decoration span {
+    color: var(--gold);
+    font-size: 10px;
+}
+
+/* SUCCESS AND ERROR MESSAGES */
+
+.message {
+    margin-bottom: 20px;
+    padding: 12px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.message.success {
+    border: 1px solid #c9e6d2;
+    background: #edf8f0;
+    color: var(--success);
+}
+
+.message.error {
+    border: 1px solid #efcccc;
+    background: #fff0f0;
+    color: var(--error);
+}
+
+/* MOBILE LAYOUT */
+
+@media (max-width: 800px) {
+    .auth-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .visual-panel {
+        display: none;
+    }
+
+    .form-panel {
+        min-height: 100vh;
+        padding: 35px 24px;
+    }
+
+    .mobile-brand {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 45px;
+        color: var(--navy);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+    }
+
+    .mobile-brand .brand-icon {
+        border-color: var(--navy);
+        color: var(--navy);
+    }
+
+    .form-heading h2 {
+        font-size: 30px;
+    }
+
+    .form-decoration {
+        margin-top: 35px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+}

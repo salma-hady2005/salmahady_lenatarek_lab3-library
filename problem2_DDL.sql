@@ -1,0 +1,20 @@
+CREATE DATABASE IF NOT EXISTS library_db;
+
+USE library_db;
+
+CREATE TABLE IF NOT EXISTS AUTHOR (
+    author_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    country VARCHAR(100)
+);
+
+CREATE TABLE IF NOT EXISTS BOOK (
+    book_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    author_id INT NOT NULL,
+    CONSTRAINT fk_book_author
+        FOREIGN KEY (author_id)
+        REFERENCES AUTHOR(author_id)
+        ON DELETE CASCADE
+);
